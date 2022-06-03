@@ -36,7 +36,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className={ modal && 'pinup' }>
       <Header 
         budget={ budget }
         isValidBudget={ isValidBudget }
