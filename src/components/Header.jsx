@@ -1,13 +1,16 @@
 import NewBudget from './NewBudget'
 
-function Header() {
+function Header( { budget, setBudget } ) {
 
   return (
     <header>
       <h1>
         Budget Planner
       </h1>
-      <NewBudget />
+      <NewBudget 
+        budget={ budget }
+        setBudget={ setBudget }
+      />
     </header>
   );
 }
