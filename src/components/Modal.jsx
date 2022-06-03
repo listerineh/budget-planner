@@ -1,15 +1,46 @@
 import { useState } from 'react'
 
+import Message from '../components/Message'
 import CloseModalIcon from '../img/close.svg'
 
-function Modal( { setModal, animateModal, setAnimateModal } ) {
+function Modal( { 
+  setModal, 
+  animateModal, 
+  setAnimateModal,
+  addBudget
+} ) {
+
+  const [message, setMessage] = useState('')
+
+  const [budgetName, setBudgetname] = useState('')
+  const [budgetAmount, setBudgetamount] = useState('')
+  const [budgetCategory, setBudgetCategory] = useState('')
 
   const hideModal = () => {
     setAnimateModal(false)
-
     setTimeout(() => {
       setModal(false)
     }, 500)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    if( [budgetName, budgetAmount, budgetCategory].includes('') ){
+      setMessage('Please fill all the fields!')
+
+      setTimeout(() => {
+        setMessage('')
+      }, 3000)
+      return
+    }
+
+    addBudget({
+      budgetName,
+      budgetAmount,
+      budgetCategory
+    })
+
   }
 
   return (
@@ -22,8 +53,13 @@ function Modal( { setModal, animateModal, setAnimateModal } ) {
         />
       </div>
 
-      <form className={`form ${animateModal ? 'animate' : 'close'}`}>
+      <form 
+        className={`form ${animateModal ? 'animate' : 'close'}`}
+        onSubmit={ handleSubmit }
+      >
         <legend>New Budget</legend>
+
+        { message && <Message type="error">{ message }</Message> }
 
         <div className="field">
           <label htmlFor="budget-name">Budget name</label>
@@ -31,6 +67,8 @@ function Modal( { setModal, animateModal, setAnimateModal } ) {
             id="budget-name"
             type="text"
             placeholder="Enter the budget name"
+            value={ budgetName }
+            onChange={ (e) => setBudgetname(e.target.value) }
           />
         </div>
 
@@ -40,12 +78,18 @@ function Modal( { setModal, animateModal, setAnimateModal } ) {
             id="amount"
             type="number"
             placeholder="Enter the budget amount"
+            value={ budgetAmount }
+            onChange={ (e) => setBudgetamount(Number(e.target.value)) }
           />
         </div>
 
         <div className="field">
           <label htmlFor="category">Category</label>
-          <select id="category">
+          <select 
+            id="category"
+            value={ budgetCategory }
+            onChange={ (e) => setBudgetCategory(e.target.value)}
+          >
             <option value="">-- Select one --</option>
             <option value="saving">Saving</option>
             <option value="food">Food</option>
