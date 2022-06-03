@@ -1,4 +1,5 @@
-import NewBudget from "./NewBudget";
+import NewBudget from "./NewBudget"
+import BudgetAdmin from "./BudgetAdmin"
 
 function Header({ 
   budget, 
@@ -13,7 +14,9 @@ function Header({
       { 
         isValidBudget ? 
         (
-          <p>Budget Administration</p>
+          <BudgetAdmin 
+            budget={ budget }
+          />
         ) 
         : 
         (
