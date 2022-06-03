@@ -1,1 +1,1 @@
-"# Simple budget planner using React and Tailwind CSS" 
+# Simple budget planner using React and Normalize CSS
