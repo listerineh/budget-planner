@@ -1,43 +1,81 @@
 import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+
+import Header from './components/Header'
+import Listing from './components/Listing'
+import Modal from './components/Modal'
+
+import { generateId } from './helpers'
+import NewExpenseIcon from './img/new_expense.svg'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [budget, setBudget] = useState(0)
+  const [isValidBudget, setIsValidBudget] = useState(false)
+
+  const [modal, setModal] = useState(false)
+  const [animateModal, setAnimateModal] = useState(false)
+
+  const [expenses, setExpenses] = useState([])
+
+  const handleNewExpense = () => {
+    setModal(true)
+    setTimeout(() => {
+      setAnimateModal(true)
+    }, 500)
+  }
+
+  const addBudget = (objBudget) => {
+    objBudget.id = generateId()
+    objBudget.date = Date.now()
+    setExpenses([...expenses, objBudget])
+
+    setAnimateModal(false)
+    setTimeout(() => {
+      setModal(false)
+    }, 500)
+  }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+    <div className={ modal && 'pinup' }>
+      <Header 
+        budget={ budget }
+        isValidBudget={ isValidBudget }
+        setBudget={ setBudget }
+        setIsValidBudget={ setIsValidBudget }
+      />
+
+      {
+        isValidBudget &&
+        (
+          <>
+            <main>
+              <Listing 
+                expenses={ expenses }
+              />
+            </main>
+            <div className="new-expense">
+              <img 
+                src={ NewExpenseIcon }
+                alt='New Expense Icon'
+                onClick={ handleNewExpense }
+              />
+            </div>
+          </>
+        )
+      }
+
+      {
+        modal && 
+        (
+          <Modal
+            setModal={ setModal }
+            animateModal={ animateModal }
+            setAnimateModal={ setAnimateModal }
+            addBudget={ addBudget }
+          />
+        )
+      }
+
     </div>
   )
 }
