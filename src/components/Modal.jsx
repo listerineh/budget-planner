@@ -36,9 +36,9 @@ function Modal( {
     }
 
     addBudget({
-      budgetName,
-      budgetAmount,
-      budgetCategory
+      name: budgetName,
+      amount: budgetAmount,
+      category: budgetCategory
     })
 
   }
@@ -94,7 +94,7 @@ function Modal( {
             <option value="saving">Saving</option>
             <option value="food">Food</option>
             <option value="home">Home</option>
-            <option value="various-expenses">Various expenses</option>
+            <option value="various">Various expenses</option>
             <option value="leisure">Leisure</option>
             <option value="health">Health</option>
             <option value="subscriptions">Subscriptions</option>

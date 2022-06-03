@@ -1,7 +1,9 @@
 import { useState } from 'react'
 
 import Header from './components/Header'
+import Listing from './components/Listing'
 import Modal from './components/Modal'
+
 import { generateId } from './helpers'
 import NewExpenseIcon from './img/new_expense.svg'
 
@@ -22,10 +24,9 @@ function App() {
     }, 500)
   }
 
-   
-
   const addBudget = (objBudget) => {
     objBudget.id = generateId()
+    objBudget.date = Date.now()
     setExpenses([...expenses, objBudget])
 
     setAnimateModal(false)
@@ -46,13 +47,20 @@ function App() {
       {
         isValidBudget &&
         (
-          <div className="new-expense">
-            <img 
-              src={ NewExpenseIcon }
-              alt='New Expense Icon'
-              onClick={ handleNewExpense }
-            />
-          </div>
+          <>
+            <main>
+              <Listing 
+                expenses={ expenses }
+              />
+            </main>
+            <div className="new-expense">
+              <img 
+                src={ NewExpenseIcon }
+                alt='New Expense Icon'
+                onClick={ handleNewExpense }
+              />
+            </div>
+          </>
         )
       }
 
