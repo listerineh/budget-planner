@@ -24,16 +24,12 @@ function NewBudget( {
   }
 
   return (
-    <div 
-      className="container-budget container shadow"
-    >
+    <div className="container-budget container shadow">
       <form 
         className="form"
         onSubmit={ handleBudget }
       >
-        <div 
-          className="field"
-        >
+        <div className="field">
           <label>Define Budget</label>
           <input 
             className="new-budget"
@@ -50,12 +46,7 @@ function NewBudget( {
         />
 
         { 
-          message && 
-          <Message
-            type="error"
-          >
-            {message}
-          </Message> 
+          message && <Message type="error">{message}</Message> 
         }
 
       </form>

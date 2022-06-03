@@ -10,16 +10,12 @@ function BudgetAdmin( { budget } ) {
   }
   
   return (
-    <div 
-      className="container-budget container shadow two-columns"
-    >
+    <div className="container-budget container shadow two-columns">
       <div>
         <p>Graphics</p>
       </div>
 
-      <div
-        className="content-budget"
-      >
+      <div className="content-budget">
         <p>
           <span>Budget: </span> { formatBudget(budget) }
         </p>

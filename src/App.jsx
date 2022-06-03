@@ -32,9 +32,7 @@ function App() {
       {
         isValidBudget &&
         (
-          <div
-            className="new-expense"
-          >
+          <div className="new-expense">
             <img 
               src={ NewExpenseIcon }
               alt='New Expense Icon'
