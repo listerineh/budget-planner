@@ -19,7 +19,7 @@ function BudgetAdmin( { budget, expenses } ) {
 
     setTimeout(() => {
       setPercent(newPercent)
-    }, 1500)
+    }, 1200)
   }, [expenses])
 
   const formatBudget = ( value ) => {
@@ -34,9 +34,9 @@ function BudgetAdmin( { budget, expenses } ) {
       <div>
         <CircularProgressbar
           styles={buildStyles({
-            pathColor: '#205f0d',
+            pathColor: percent > 100 ? '#dc2626' : '#205f0d',
+            textColor: percent > 100 ? '#dc2626' : '#205f0d',
             trailColor: '#f5f5f5',
-            textColor: '#205f0d',
           })}
           value={ percent }
           text={`${percent}% spent`}
@@ -48,7 +48,7 @@ function BudgetAdmin( { budget, expenses } ) {
           <span>Budget: </span> { formatBudget(budget) }
         </p>
 
-        <p>
+        <p className={`${available}` < 0 ? 'negative' : ''}>
           <span>Available: </span> { formatBudget(available) }
         </p>
 
