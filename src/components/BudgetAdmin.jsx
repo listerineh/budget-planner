@@ -1,7 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
+import { CircularProgressbar } from 'react-circular-progressbar'
+import 'react-circular-progressbar/dist/styles.css'
 
 function BudgetAdmin( { budget, expenses } ) {
 
+  const [percent, setPercent] = useState(0)
   const [available, setAvailable] = useState(0)
   const [spent, setSpent] = useState(0)
 
@@ -9,8 +12,14 @@ function BudgetAdmin( { budget, expenses } ) {
     const totalSpent = expenses.reduce( (total, expense) => expense.amount + total, 0 )
     const totalAvailable = budget - totalSpent
 
+    const newPercent = (((budget - totalAvailable) / budget) * 100 ).toFixed(2)
+
     setSpent(totalSpent)
     setAvailable(totalAvailable)
+
+    setTimeout(() => {
+      setPercent(newPercent)
+    }, 1500)
   }, [expenses])
 
   const formatBudget = ( value ) => {
@@ -23,7 +32,9 @@ function BudgetAdmin( { budget, expenses } ) {
   return (
     <div className="container-budget container shadow two-columns">
       <div>
-        <p>Graphics</p>
+        <CircularProgressbar
+          value={ percent }
+        />
       </div>
 
       <div className="content-budget">
