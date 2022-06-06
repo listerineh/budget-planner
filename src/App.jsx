@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 
+import Filter from './components/Filter'
 import Header from './components/Header'
 import Listing from './components/Listing'
 import Modal from './components/Modal'
@@ -23,6 +24,9 @@ function App() {
   const [animateModal, setAnimateModal] = useState(false)
 
   const [editExpense, setEditExpense] = useState({})
+
+  const [filter, setFilter] = useState('')
+  const [filteredExpenses, setFilteredExpenses] = useState([])
 
   useEffect(() => {
     if( Object.keys(editExpense).length > 0 ) {
@@ -48,6 +52,13 @@ function App() {
       setIsValidBudget(true)
     }
   }, [])
+
+  useEffect(() => {
+    if( filter ) {
+      const _filteredExpenses = expenses.filter(expense => expense.category === filter)
+      setFilteredExpenses(_filteredExpenses)
+    }
+  }, [filter])
 
   const handleNewExpense = () => {
     setModal(true)
@@ -94,10 +105,16 @@ function App() {
         (
           <>
             <main>
+              <Filter 
+                filter={ filter }
+                setFilter={ setFilter }
+              />
               <Listing 
                 expenses={ expenses }
                 setEditExpense={ setEditExpense }
                 deleteExpense={ deleteExpense }
+                filter={ filter }
+                filteredExpenses={ filteredExpenses }
               />
             </main>
             <div className="new-expense">
