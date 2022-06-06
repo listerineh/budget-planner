@@ -2,6 +2,7 @@ import NewBudget from "./NewBudget"
 import BudgetAdmin from "./BudgetAdmin"
 
 function Header({ 
+  expenses,
   budget, 
   isValidBudget, 
   setBudget, 
@@ -16,6 +17,7 @@ function Header({
         (
           <BudgetAdmin 
             budget={ budget }
+            expenses={ expenses }
           />
         ) 
         : 

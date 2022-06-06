@@ -1,3 +1,12 @@
+import { 
+  LeadingActions,
+  SwipeableList,
+  SwipeableListItem,
+  SwipeAction,
+  TrailingActions
+ } from 'react-swipeable-list'
+ import 'react-swipeable-list/dist/styles.css'
+
 import { useState } from 'react'
 
 import { getFormatedDate } from '../helpers'
@@ -19,35 +28,62 @@ const iconDictionary = {
   subscriptions : SubsIcon,
 }
 
-function Expense( { expense }) {
+function Expense( { expense, setEditExpense }) {
 
   const { category, name, amount, date, id } = expense
 
+  const leadingActions = () => (
+    <LeadingActions>
+      <SwipeAction
+        onClick={ () => setEditExpense(expense) }
+      >
+        Edit
+      </SwipeAction>
+    </LeadingActions>
+  )
+
+  const trailingActions = () => (
+    <TrailingActions>
+      <SwipeAction
+        onClick={ () => console.log('deleting...')}
+      >
+        Delete
+      </SwipeAction>
+    </TrailingActions>
+  )
+
   return (
-    <div className="expense shadow">
+    <SwipeableList>
+      <SwipeableListItem
+        leadingActions={ leadingActions() }
+        trailingActions={ trailingActions() }
+      >
+        <div className="expense shadow">
 
-      <div className="content-expense">
+          <div className="content-expense">
 
-        <img 
-          src={ iconDictionary[category] }
-          alt="Expense Icon"
-        />
+            <img 
+              src={ iconDictionary[category] }
+              alt="Expense Icon"
+            />
 
-        <div className="description-expense">
-          <p className="category">{ category }</p>
-          <p className="name-expense">{ name }</p>
-          <p className="date-expense">
-            Added on {''}
-            <span>
-              { getFormatedDate(date) }
-            </span>
-          </p>
+            <div className="description-expense">
+              <p className="category">{ category }</p>
+              <p className="name-expense">{ name }</p>
+              <p className="date-expense">
+                Added on {''}
+                <span>
+                  { getFormatedDate(date) }
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <p className="amount-expense">${ amount }</p>
+
         </div>
-      </div>
-
-      <p className="amount-expense">${ amount }</p>
-
-    </div>
+      </SwipeableListItem>
+    </SwipeableList>
   )
 }
 

@@ -1,6 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function BudgetAdmin( { budget } ) {
+function BudgetAdmin( { budget, expenses } ) {
+
+  const [available, setAvailable] = useState(0)
+  const [spent, setSpent] = useState(0)
+
+  useEffect(() => {
+    const totalSpent = expenses.reduce( (total, expense) => expense.amount + total, 0 )
+    const totalAvailable = budget - totalSpent
+
+    setSpent(totalSpent)
+    setAvailable(totalAvailable)
+  }, [expenses])
 
   const formatBudget = ( value ) => {
     return value.toLocaleString('en-US', {
@@ -21,11 +32,11 @@ function BudgetAdmin( { budget } ) {
         </p>
 
         <p>
-          <span>Available: </span> { formatBudget(0) }
+          <span>Available: </span> { formatBudget(available) }
         </p>
 
         <p>
-          <span>Spent: </span> { formatBudget(0) }
+          <span>Spent: </span> { formatBudget(spent) }
         </p>
 
       </div>

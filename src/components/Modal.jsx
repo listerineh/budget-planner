@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { object } from 'prop-types'
+import { useState, useEffect } from 'react'
 
 import Message from '../components/Message'
 import CloseModalIcon from '../img/close.svg'
@@ -7,14 +8,27 @@ function Modal( {
   setModal, 
   animateModal, 
   setAnimateModal,
-  addBudget
+  addBudget,
+  editExpense
 } ) {
 
   const [message, setMessage] = useState('')
 
-  const [budgetName, setBudgetname] = useState('')
-  const [budgetAmount, setBudgetamount] = useState('')
+  const [budgetName, setBudgetName] = useState('')
+  const [budgetAmount, setBudgetAmount] = useState('')
   const [budgetCategory, setBudgetCategory] = useState('')
+  const [budgetDate, setBudgetDate] = useState('')
+  const [budgetId, setBudgetId] = useState('')
+
+  useEffect( () => {
+    if( Object.keys(editExpense).length > 0 ) {
+      setBudgetName(editExpense.name)
+      setBudgetAmount(editExpense.amount)
+      setBudgetCategory(editExpense.category)
+      setBudgetDate(editExpense.date)
+      setBudgetId(editExpense.id)
+    }
+  }, [])
 
   const hideModal = () => {
     setAnimateModal(false)
@@ -38,7 +52,9 @@ function Modal( {
     addBudget({
       name: budgetName,
       amount: budgetAmount,
-      category: budgetCategory
+      category: budgetCategory,
+      date: budgetDate,
+      id: budgetId
     })
 
   }
@@ -57,7 +73,7 @@ function Modal( {
         className={`form ${animateModal ? 'animate' : 'close'}`}
         onSubmit={ handleSubmit }
       >
-        <legend>New Budget</legend>
+        <legend>{editExpense.name ? 'Edit Expense' : 'New Expense'}</legend>
 
         { message && <Message type="error">{ message }</Message> }
 
@@ -68,7 +84,7 @@ function Modal( {
             type="text"
             placeholder="Enter the budget name"
             value={ budgetName }
-            onChange={ (e) => setBudgetname(e.target.value) }
+            onChange={ (e) => setBudgetName(e.target.value) }
           />
         </div>
 
@@ -79,7 +95,7 @@ function Modal( {
             type="number"
             placeholder="Enter the budget amount"
             value={ budgetAmount }
-            onChange={ (e) => setBudgetamount(Number(e.target.value)) }
+            onChange={ (e) => setBudgetAmount(Number(e.target.value)) }
           />
         </div>
 
@@ -103,7 +119,7 @@ function Modal( {
 
         <input 
           type="submit"
-          value="Add Budget"
+          value={ editExpense.name ? 'Save changes': 'Add Budget' }
         />
 
       </form>
