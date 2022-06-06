@@ -389,7 +389,7 @@ body .modal {
 
 /*** SWIPE LIST OVERRIDES **/
 .swipe-action__leading {
-    background-color: var(--green);
+    background-color: #fcba03;
     color: var(--white);
     margin-bottom: 2rem;
 }

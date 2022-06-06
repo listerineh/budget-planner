@@ -36,8 +36,10 @@ function BudgetAdmin( { budget, expenses } ) {
           styles={buildStyles({
             pathColor: '#205f0d',
             trailColor: '#f5f5f5',
+            textColor: '#205f0d',
           })}
           value={ percent }
+          text={`${percent}% spent`}
         />
       </div>
 
