@@ -94,9 +94,10 @@ function App() {
     <div className={ modal ? 'pinup' : '' }>
       <Header 
         expenses={ expenses }
+        setExpenses={ setExpenses }
         budget={ budget }
-        isValidBudget={ isValidBudget }
         setBudget={ setBudget }
+        isValidBudget={ isValidBudget }
         setIsValidBudget={ setIsValidBudget }
       />
 
