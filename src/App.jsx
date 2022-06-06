@@ -9,7 +9,9 @@ import NewExpenseIcon from './img/new_expense.svg'
 
 function App() {
 
-  const [expenses, setExpenses] = useState([])
+  const [expenses, setExpenses] = useState(
+    localStorage.getItem('expenses') ? JSON.parse(localStorage.getItem('expenses')) : []
+  )
 
   const [budget, setBudget] = useState(
     Number(localStorage.getItem('budget')) ?? 0
@@ -34,6 +36,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem('budget', budget ?? 0)
   }, [budget])
+
+  useEffect(() => {
+    localStorage.setItem('expenses', JSON.stringify(expenses) ?? [])
+  }, [expenses])
 
   useEffect(() => {
     const localStorageBudget = Number(localStorage.getItem('budget'))
