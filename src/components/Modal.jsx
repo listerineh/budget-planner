@@ -8,8 +8,9 @@ function Modal( {
   setModal, 
   animateModal, 
   setAnimateModal,
-  addBudget,
-  editExpense
+  addExpense,
+  editExpense,
+  setEditExpense
 } ) {
 
   const [message, setMessage] = useState('')
@@ -32,6 +33,7 @@ function Modal( {
 
   const hideModal = () => {
     setAnimateModal(false)
+    setEditExpense({})
     setTimeout(() => {
       setModal(false)
     }, 500)
@@ -49,7 +51,7 @@ function Modal( {
       return
     }
 
-    addBudget({
+    addExpense({
       name: budgetName,
       amount: budgetAmount,
       category: budgetCategory,

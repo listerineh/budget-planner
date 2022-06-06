@@ -36,20 +36,26 @@ function App() {
     }, 500)
   }
 
-  const addBudget = (objBudget) => {
-    if( objBudget.id ) {
-      const updatedExpenses = expenses.map( state => state.id === objBudget.id ? objBudget : state)
+  const addExpense = (expense) => {
+    if( expense.id ) {
+      const updatedExpenses = expenses.map( state => state.id === expense.id ? expense : state)
       setExpenses(updatedExpenses)
     } else {
-      objBudget.id = generateId()
-      objBudget.date = Date.now()
-      setExpenses([...expenses, objBudget])
+      expense.id = generateId()
+      expense.date = Date.now()
+      setExpenses([...expenses, expense])
+      setEditExpense({})
     }
 
     setAnimateModal(false)
     setTimeout(() => {
       setModal(false)
     }, 500)
+  }
+
+  const deleteExpense = (id) => {
+    const updatedExpenses = expenses.filter( expense => expense.id !== id)
+    setExpenses(updatedExpenses)
   }
 
   return (
@@ -70,6 +76,7 @@ function App() {
               <Listing 
                 expenses={ expenses }
                 setEditExpense={ setEditExpense }
+                deleteExpense={ deleteExpense }
               />
             </main>
             <div className="new-expense">
@@ -90,8 +97,9 @@ function App() {
             setModal={ setModal }
             animateModal={ animateModal }
             setAnimateModal={ setAnimateModal }
-            addBudget={ addBudget }
+            addExpense={ addExpense }
             editExpense={ editExpense }
+            setEditExpense={ setEditExpense }
           />
         )
       }
