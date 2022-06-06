@@ -3,9 +3,10 @@ import BudgetAdmin from "./BudgetAdmin"
 
 function Header({ 
   expenses,
+  setExpenses,
   budget, 
-  isValidBudget, 
   setBudget, 
+  isValidBudget, 
   setIsValidBudget }) {
 
   return (
@@ -17,7 +18,10 @@ function Header({
         (
           <BudgetAdmin 
             budget={ budget }
+            setBudget={ setBudget }
             expenses={ expenses }
+            setExpenses={ setExpenses }
+            setIsValidBudget={ setIsValidBudget }
           />
         ) 
         : 
