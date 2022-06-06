@@ -2,7 +2,7 @@ import { useState } from "react"
 
 import Expense from "./Expense"
 
-function Listing({ expenses }) {
+function Listing({ expenses, setEditExpense, deleteExpense }) {
 
   return (
     <div className="listing-expenses container">
@@ -12,6 +12,8 @@ function Listing({ expenses }) {
         <Expense 
           key={ expense.id }
           expense={ expense }
+          setEditExpense={ setEditExpense }
+          deleteExpense={ deleteExpense }
         />
       ))}
     </div>
