@@ -11,7 +11,7 @@ function Header({
 
   return (
     <header>
-      <h1>Budget Planner</h1>
+      <h1>iTeam <span style={{ color: "#2567F9"}}>Jobs</span></h1>
 
       { 
         isValidBudget ? 
@@ -31,7 +31,7 @@ function Header({
             setBudget={ setBudget } 
             setIsValidBudget={ setIsValidBudget }
           />
-        ) 
+        )  
       }
 
     </header>

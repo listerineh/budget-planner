@@ -50,8 +50,8 @@ function BudgetAdmin( {
       <div>
         <CircularProgressbar
           styles={buildStyles({
-            pathColor: percent > 100 ? '#dc2626' : '#205f0d',
-            textColor: percent > 100 ? '#dc2626' : '#205f0d',
+            pathColor: percent > 100 ? '#dc2626' : '#23265A',
+            textColor: percent > 100 ? '#dc2626' : '#23265A',
             trailColor: '#f5f5f5',
           })}
           value={ percent }
