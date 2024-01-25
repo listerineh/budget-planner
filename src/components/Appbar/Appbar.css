@@ -1,0 +1,25 @@
+.appbar-container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 1.5rem;
+    gap: 1rem;
+    height: 4rem;
+    color: var(--text-primary-color);
+}
+
+.appbar-text {
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.text-secondary {
+    color: var(--text-secondary-color);
+}
+
+.section-name {
+    text-align: center;
+    font-size: 4rem;
+    color: var(--text-primary-color);
+    padding: 3rem 0;
+}
