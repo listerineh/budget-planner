@@ -5,7 +5,7 @@ import LeftArrow from "../../components/LeftArrow";
 
 const Home = () => {
   const handleClick = () => {
-    window.location.href = "/old";
+    window.location.href = '/old';
   };
 
   return (
