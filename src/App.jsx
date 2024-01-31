@@ -6,6 +6,7 @@ import {
 import Welcome from "./pages/Welcome/Welcome";
 import Clean from "./pages/Clean";
 import Home from "./pages/Home/Home";
+import Finance from "./pages/Finance/Finance";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/finance",
-    element: <div>Working on ...</div>,
+    element: <Finance />,
   },
   {
     path: "/expenses",

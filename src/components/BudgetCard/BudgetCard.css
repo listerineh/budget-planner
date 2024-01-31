@@ -1,0 +1,39 @@
+.budget-card-container {
+  background-color: var(--tertiary-color);  
+  color: var(--text-primary-color);  
+  padding: 25px;
+  margin: 25px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  width: auto;
+  max-width: 400px;
+}
+
+.budget-card-text-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.budget-card-text-layout p {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.budget-card-bar {
+  max-width: 200px;
+}
+
+.budget-card-bar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.budget-card-percentage {
+  font-size: 3rem;
+}

@@ -19,3 +19,11 @@
     padding: 3rem 0;
     background-color: var(--secondary-color);
 }
+
+.appbar-anchor {
+    text-decoration: none;
+    color: var(--text-primary-color);
+    font-size: 2rem;
+    font-weight: 700;
+    transition: all 0.3s ease-in-out;
+}
