@@ -4,20 +4,21 @@ import "./Welcome.css";
 
 const Welcome = () => {
   return (
-    <>
-      <div className="welcome-header">
-        <h1 className="header-principal">
-          iTeam <span className="header-secondary">Jobs</span>
-        </h1>
+    <div className="welcome-container">
+      <div className="upper-side">
+        <img className="welcome-image"
+          src="/images/monet-logo.png"
+          alt="Monet Logo"
+        />
+        <h2 className="welcome-header">Suite de soluciones financieras</h2>
       </div>
-      <div className="welcome-content">
-        <h2 className="content-title">Suite de soluciones financieras</h2>
+      <div className="bottom-side">
         <Link to='/services' className="content-button">
           INGRESAR
           <LeftArrow />
         </Link>
       </div>
-    </>
+    </div>
   );
 };
 
