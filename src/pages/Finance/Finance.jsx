@@ -10,7 +10,12 @@ const Finance = () => {
   return (
     <>
       <Appbar sectionName="Software Financiero" />
-      <BudgetCard />
+      <BudgetCard 
+        budget={2000} 
+        expensesValue={500} 
+        savingsValue={800} 
+        investmentsValue={400} 
+      />
       <Category
         name="Inversion"
         Icon={Investment}
@@ -18,12 +23,12 @@ const Finance = () => {
           {
             name: "AirBnb Quito",
             date: "14 Oct 2020",
-            price: 50,
+            price: 150,
           },
           {
             name: "AirBnb Cuenca",
             date: "14 Oct 2020",
-            price: 100,
+            price: 250,
           },
         ]}
       />
@@ -34,12 +39,12 @@ const Finance = () => {
           {
             name: "Fondo de Jubilacion",
             date: "14 Oct 2020",
-            price: 30,
+            price: 650,
           },
           {
             name: "SaludSA",
             date: "14 Oct 2020",
-            price: 80,
+            price: 150,
           },
         ]}
       />
@@ -58,9 +63,14 @@ const Finance = () => {
             price: 8,
           },
           {
-            name: "KFC Calderon",
+            name: "zapatillas Nike",
             date: "14 Oct 2020",
-            price: 11.50,
+            price: 78,
+          },
+          {
+            name: "Silla Gamer",
+            date: "14 Oct 2020",
+            price: 400,
           },
         ]}
       />

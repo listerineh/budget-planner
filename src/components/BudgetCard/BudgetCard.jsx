@@ -1,19 +1,23 @@
-import { CircularProgressbar, CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar'
+import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar'
 import Elipse from '../icons/Elipse'
 import './BudgetCard.css'
 
-const BudgetCard = () => {
+const BudgetCard = ({budget, expensesValue, savingsValue, investmentsValue}) => {
+  const getPercentage = (value) => {
+    return value * 100 / budget
+  }
+
   return (
     <div className='budget-card-container'>
       <div className='budget-card-text-layout'>
         <p>Presupuesto</p>
-        <p>$ 2,000</p>
+        <p>$ {budget}</p>
       </div>
 
       <div className='budget-card-bar-container'>
         <div className='budget-card-bar'>
           <CircularProgressbarWithChildren
-            value={84}
+            value={getPercentage(investmentsValue + savingsValue + expensesValue)}
             strokeWidth={12}
             styles={buildStyles({
               pathColor: "#FF3C82",
@@ -21,7 +25,7 @@ const BudgetCard = () => {
             })}
           >
             <CircularProgressbarWithChildren
-              value={70}
+              value={getPercentage(savingsValue + expensesValue)}
               strokeWidth={12}
               styles={buildStyles({
                 pathColor: "#8F3CFF",
@@ -29,14 +33,14 @@ const BudgetCard = () => {
               })}
             >
               <CircularProgressbarWithChildren
-                value={50}
+                value={getPercentage(expensesValue)}
                 strokeWidth={12}
                 styles={buildStyles({
                   pathColor: "#FF2567F93C82",
                   trailColor: "transparent",
                 })}
               >
-                <h3 className='budget-card-percentage'>{`${84}%`}</h3>
+                <h3 className='budget-card-percentage'>{`${getPercentage(investmentsValue + expensesValue + savingsValue)}%`}</h3>
               </CircularProgressbarWithChildren>
             </CircularProgressbarWithChildren>
           </CircularProgressbarWithChildren>
@@ -45,15 +49,15 @@ const BudgetCard = () => {
 
       <div className='budget-card-text-layout'>
         <p><Elipse color="#2567F9"/> Inversion</p>
-        <p>$ 1,753.92</p>
+        <p>$ {investmentsValue}</p>
       </div>
       <div className='budget-card-text-layout'>
         <p><Elipse color="#8F3CFF"/> Ahorro</p>
-        <p>$ 1,019.68</p>
+        <p>$ {savingsValue}</p>
       </div>
       <div className='budget-card-text-layout'>
         <p><Elipse color="#FF3C82"/> Gastos</p>
-        <p>$ 952.68</p>
+        <p>$ {expensesValue}</p>
       </div>
     </div>
   )
