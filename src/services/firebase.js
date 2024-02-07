@@ -12,7 +12,7 @@ const firebaseConfig = {
   measurementId: envManager.MEASUREMENT_ID,
 };
 
-console.log(firebaseConfig);
+console.log("config: ", firebaseConfig);
 
 const app = initializeApp(firebaseConfig);
 
