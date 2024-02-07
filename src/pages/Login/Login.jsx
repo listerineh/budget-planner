@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth } from "../../services/firebase";
 import { useLogged } from "../../context/UserContext";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import "./Login.css";
 
 const Login = () => {
@@ -27,7 +31,7 @@ const Login = () => {
   const handleSimpleLogin = async (e) => {
     e.preventDefault();
     const res = await signInWithEmailAndPassword(auth, email, password);
-    
+
     if (!res.user) {
       toast.error("Usuario o contraseña incorrectos");
       return;
