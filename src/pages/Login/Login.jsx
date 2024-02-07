@@ -30,7 +30,12 @@ const Login = () => {
 
   const handleSimpleLogin = async (e) => {
     e.preventDefault();
-    const res = await signInWithEmailAndPassword(auth, email, password);
+    try {
+      const res = await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      toast.error(error.message);
+      return;
+    }
 
     if (!res.user) {
       toast.error("Usuario o contraseña incorrectos");

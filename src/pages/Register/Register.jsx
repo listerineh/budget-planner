@@ -13,7 +13,12 @@ const Register = () => {
 
   const handleSimpleRegister = async (e) => {
     e.preventDefault();
+    try{
     const res = await createUserWithEmailAndPassword(auth, email, password)
+    } catch (error) {
+      toast.error(error.message);
+      return;
+    }
     
     if (!res.user) {
       toast.error("Hubo un problema al crear la cuenta, intente mas tarde.");
