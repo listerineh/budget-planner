@@ -21,7 +21,7 @@ const Login = () => {
     const provider = new GoogleAuthProvider();
     const res = await signInWithPopup(auth, provider);
 
-    toast.success("Bienvenido");
+    toast.success("Bienvenido!");
 
     const user = res.user;
     login(user);
@@ -42,6 +42,8 @@ const Login = () => {
       toast.error("Usuario o contraseña incorrectos");
       return;
     }
+
+    toast.success("Bienvenido!");
 
     const user = res.user;
     login(user);
