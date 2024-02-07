@@ -12,8 +12,6 @@ const firebaseConfig = {
   measurementId: envManager.MEASUREMENT_ID,
 };
 
-console.log("config: ", firebaseConfig);
-
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
