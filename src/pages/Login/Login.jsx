@@ -30,8 +30,9 @@ const Login = () => {
 
   const handleSimpleLogin = async (e) => {
     e.preventDefault();
+    let res = {}
     try {
-      const res = await signInWithEmailAndPassword(auth, email, password);
+      res = await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
       toast.error(error.message);
       return;

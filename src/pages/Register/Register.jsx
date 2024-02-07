@@ -13,8 +13,9 @@ const Register = () => {
 
   const handleSimpleRegister = async (e) => {
     e.preventDefault();
+    let res = {}
     try{
-    const res = await createUserWithEmailAndPassword(auth, email, password)
+      res = await createUserWithEmailAndPassword(auth, email, password)
     } catch (error) {
       toast.error(error.message);
       return;
