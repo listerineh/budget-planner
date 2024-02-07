@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "firebase": "^10.8.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.3",
     "prop-types": "^15.8.1",
@@ -16,6 +17,7 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.21.3",
     "react-swipeable-list": "^1.5.1",
+    "react-toastify": "^10.0.4",
     "sort-by": "^1.2.0"
   },
   "devDependencies": {

@@ -31,7 +31,7 @@ const Category = ({categories, name, Icon}) => {
         <div className="category-wrapper-group">
           {
             categories.map(item => (
-              <div className="category-wrapper-item">
+              <div className="category-wrapper-item" key={item.name}>
                 <div className="category-item-container">
                   <p className="category-item-name">{item.name}</p>
                   <p className="category-item-date">{item.date}</p>
